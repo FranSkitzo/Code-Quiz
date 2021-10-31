@@ -34,7 +34,7 @@ var questionIndex = 0;
 
 var currentTime = document.querySelector("#currentTime");
 var timer = document.querySelector("#startTime");
-var questionsDiv = document.querySelector("#questionDiv");
+var questionsDiv = document.querySelector("#questionsDiv");
 var wrapper = document.querySelector("#wrapper");
 
 var secondsLeft = 76;
@@ -120,10 +120,10 @@ function allDone() {
     createP.setAttribute("id", "createP");
 
     if (secondsLeft >= 0) {
-        var tiemRemaining = secondsLeft;
+        var timeRemaining = secondsLeft;
         var createP2 = document.createElement("p");
         clearInterval(holdInterval);
-        createP.textContent = "Your final score is: " + tiemRemaining;
+        createP.textContent = "Your final score is: " + timeRemaining;
 
         questionsDiv.appendChild(createP2);
     }
@@ -136,7 +136,7 @@ function allDone() {
 
     var createInput = document.createElement("input");
     createInput.setAttribute("type", "text");
-    createInput("id", "initials");
+    createInput.setAttribute("id", "initials");
     createInput.textContent = "";
 
     questionsDiv.appendChild(createInput);
@@ -155,11 +155,11 @@ function allDone() {
         } else {
             var finalScore = {
                 initials: initials,
-                score: tiemRemaining
+                score: timeRemaining
             }
             console.log(finalScore);
             var allScores = localStorage.getItem("allScores");
-            if (allScores = localStorage === null) {
+            if (allScores === null) {
                 allScores = [];
             } else {
                 allScores = JSON.parse(allScores);
@@ -167,7 +167,7 @@ function allDone() {
             allScores.push(finalScore);
             var newScore = JSON.stringify(allScores);
             localStorage.setItem("allScores", newScore);
-            window.location.replace("../../highscores.html")
+            window.location.replace("./highscores.html")
         }
     });
 }
